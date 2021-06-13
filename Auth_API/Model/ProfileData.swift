@@ -1,0 +1,31 @@
+//
+//  ProfileData.swift
+//  Auth_API
+//
+//  Created by 이민욱 on 2021/06/14.
+//
+
+import Foundation
+
+struct ProfileData {
+    var name: String
+    var email: String
+    var avatar: String
+}
+
+extension ProfileData: Codable {
+    
+    enum ProfileDataCodingkeys: String, CodingKey {
+        case name
+        case email
+        case avatar
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ProfileDataCodingkeys.self)
+        
+        name = try container.decode(String.self, forKey: .name)
+        email = try container.decode(String.self, forKey: .email)
+        avatar = try container.decode(String.self, forKey: .avatar)
+    }
+}
