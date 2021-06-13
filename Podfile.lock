@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (5.4.3)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - ProgressHUD (13.6)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - Moya
+  - ProgressHUD
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Moya
+    - ProgressHUD
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: d058e5bf496595ad57c2456f089f291ad9b6c84e
+
+COCOAPODS: 1.10.1
