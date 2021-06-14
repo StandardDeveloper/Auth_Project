@@ -6,19 +6,20 @@
 //
 
 import UIKit
+import Moya
 
 class SignupViewController: UIViewController {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
     @IBOutlet weak var signupBtn: UIButton!
+    
+    let provider = MoyaProvider<AuthAPI>()
     
     lazy var backButton: UIBarButtonItem = {
         let buttonIcon = UIImage(systemName: "chevron.backward")
@@ -30,7 +31,7 @@ class SignupViewController: UIViewController {
     
     @objc func backBtn(_ sender:UIBarButtonItem!){
         navigationController?.popViewController(animated: true)
-      }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +41,15 @@ class SignupViewController: UIViewController {
     }
     
     func navigationSetup() {
-        
         navigationItem.title = "회원가입"
         navigationItem.leftBarButtonItem = backButton
+    }
+    
+    //이메일 형식 확인
+    func isValidEmail(email : String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
     }
     
     func signupPageUISetup() {
@@ -98,8 +105,58 @@ class SignupViewController: UIViewController {
         signupBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
         signupBtn.setTitleColor(UIColor.white, for: UIControl.State.normal)
         signupBtn.backgroundColor = .black
-    
+        
     }
+    
+    @IBAction func signupBtn(_ sender: Any) {
+        
+        provider.request(.signup(name: nameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!)) { [self] response in
+            
+            switch response {
+            
+            case .success(let res):
+                
+                if res.statusCode != 200 {
+                    let alertVC = UIAlertController(title: "회원가입 오류", message: "네트워크 확인", preferredStyle: UIAlertController.Style.alert)
+                    let alertOK = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alertVC.addAction(alertOK)
+                    self.present(alertVC, animated: true, completion: nil)
+                    
+                }
+                else {
+                    let alertVC = UIAlertController(title: "회원가입 오류", message: "입력한 정보를 확인 해주세요.", preferredStyle: UIAlertController.Style.alert)
+                    let alertOK = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alertVC.addAction(alertOK)
+                    
+                    if nameTextField.text == "" || emailTextField.text == "" || passwordTextField.text == "" || confirmPasswordTextField.text == "" {
+                        self.present(alertVC, animated: true, completion: nil)
+                    }
+                    else if isValidEmail(email : emailTextField.text!) == false {
+                        self.present(alertVC, animated: true, completion: nil)
+                    }
+                    else if passwordTextField.text! != confirmPasswordTextField.text! {
+                        self.present(alertVC, animated: true, completion: nil)
+                    }
+                    else {
+                        
+                        let alertVC = UIAlertController(title: "회원가입 완료", message: "회원가입을 축하해요.", preferredStyle: UIAlertController.Style.alert)
+                        let alertOK = UIAlertAction(title: "로그인 화면으로 이동", style: .default) { action in
+                            
+                            self.navigationController?.popViewController(animated: true)
+                            
+                        }
+                        alertVC.addAction(alertOK)
+                        self.present(alertVC, animated: true, completion: nil)
+                    }
+                }
+            
+            case .failure(let err):
+                print(err)
+            }
+            
+        }
+    }
+    
     
 }
 

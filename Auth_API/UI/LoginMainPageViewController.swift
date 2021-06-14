@@ -38,10 +38,9 @@ class LoginMainPageViewController: UIViewController {
         let token = UserDefaults.standard.string(forKey: "token")
         
         if(token != nil) {
-            
+  
             let loginCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: "loginCompleteVC")
-            let window = UIApplication.shared.windows.first
-            window?.rootViewController = loginCompleteVC
+            self.navigationController?.pushViewController(loginCompleteVC!, animated: true)
         }
         
         loginMainPageUISetup()
@@ -173,8 +172,7 @@ class LoginMainPageViewController: UIViewController {
                 else {
   
                     let loginCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: "loginCompleteVC")
-                    let window = UIApplication.shared.windows.first
-                    window?.rootViewController = loginCompleteVC
+                    self.navigationController?.pushViewController(loginCompleteVC!, animated: true)
                     
                 }
                 

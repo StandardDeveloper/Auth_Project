@@ -9,21 +9,27 @@ import UIKit
 
 class FindIDViewController: UIViewController {
 
+    lazy var backButton: UIBarButtonItem = {
+        let buttonIcon = UIImage(systemName: "chevron.backward")
+        let button = UIBarButtonItem(title: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(backBtn(_:)))
+        button.image = buttonIcon
+        button.tintColor = .black
+        return button
+    }()
+    
+    @objc func backBtn(_ sender:UIBarButtonItem!){
+        navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationSetup()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func navigationSetup() {
+        navigationItem.title = "아이디 찾기"
+        navigationItem.leftBarButtonItem = backButton
     }
-    */
-
 }

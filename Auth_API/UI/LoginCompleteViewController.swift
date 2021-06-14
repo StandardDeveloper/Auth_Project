@@ -26,6 +26,7 @@ class LoginCompleteViewController: UIViewController {
         
         loginCompletePageUISetup()
         getProfileData()
+        self.navigationItem.setHidesBackButton(true, animated:true)
     }
     
     
@@ -86,13 +87,7 @@ class LoginCompleteViewController: UIViewController {
     @IBAction func logoutBtn(_ sender: Any) {
         
         UserDefaults.standard.removeObject(forKey: "token")
-        
-        let loginMainVC = self.storyboard?.instantiateViewController(withIdentifier: "loginMainVC")
-        let window = UIApplication.shared.windows.first
-        window?.rootViewController = loginMainVC
-        
+        navigationController?.popViewController(animated: true)
     }
-    
-    
     
 }
