@@ -17,6 +17,10 @@
 		D21CAE24267639FA00CBF59F /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21CAE23267639FA00CBF59F /* AuthAPI.swift */; };
 		D26A6A58267668CA00D12BEC /* AuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A6A57267668CA00D12BEC /* AuthNetworkManager.swift */; };
 		D26A6A5B2676692B00D12BEC /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26A6A5A2676692B00D12BEC /* ProfileData.swift */; };
+		D2C5CA36267719BE00031837 /* FindIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5CA35267719BD00031837 /* FindIDViewController.swift */; };
+		D2C5CA38267719C600031837 /* FindPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5CA37267719C600031837 /* FindPWViewController.swift */; };
+		D2C5CA3A267719E900031837 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5CA39267719E900031837 /* SignupViewController.swift */; };
+		D2C5CA3F267725FE00031837 /* LoginCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5CA3E267725FE00031837 /* LoginCompleteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		D21CAE23267639FA00CBF59F /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		D26A6A57267668CA00D12BEC /* AuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkManager.swift; sourceTree = "<group>"; };
 		D26A6A5A2676692B00D12BEC /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		D2C5CA35267719BD00031837 /* FindIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIDViewController.swift; sourceTree = "<group>"; };
+		D2C5CA37267719C600031837 /* FindPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewController.swift; sourceTree = "<group>"; };
+		D2C5CA39267719E900031837 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		D2C5CA3E267725FE00031837 /* LoginCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCompleteViewController.swift; sourceTree = "<group>"; };
 		F337547D15FB29B920298F5F /* Pods-Auth_API.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Auth_API.release.xcconfig"; path = "Target Support Files/Pods-Auth_API/Pods-Auth_API.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				D21CAE1E2676360400CBF59F /* LoginMainPageViewController.swift */,
+				D2C5CA3E267725FE00031837 /* LoginCompleteViewController.swift */,
+				D2C5CA35267719BD00031837 /* FindIDViewController.swift */,
+				D2C5CA37267719C600031837 /* FindPWViewController.swift */,
+				D2C5CA39267719E900031837 /* SignupViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -246,9 +258,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C5CA3A267719E900031837 /* SignupViewController.swift in Sources */,
 				D21CAE24267639FA00CBF59F /* AuthAPI.swift in Sources */,
 				D26A6A58267668CA00D12BEC /* AuthNetworkManager.swift in Sources */,
+				D2C5CA36267719BE00031837 /* FindIDViewController.swift in Sources */,
 				D21CAE0B267635C800CBF59F /* AppDelegate.swift in Sources */,
+				D2C5CA3F267725FE00031837 /* LoginCompleteViewController.swift in Sources */,
+				D2C5CA38267719C600031837 /* FindPWViewController.swift in Sources */,
 				D21CAE1F2676360400CBF59F /* LoginMainPageViewController.swift in Sources */,
 				D21CAE0D267635C800CBF59F /* SceneDelegate.swift in Sources */,
 				D26A6A5B2676692B00D12BEC /* ProfileData.swift in Sources */,

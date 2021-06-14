@@ -16,7 +16,6 @@ enum AuthAPI {
     case forgotpassword(email: String)
     case resetpassword(resetPasswordLink: String, newPassword: String)
     case current(token: String)
-    case googleLogin(token: String)
     case facebookLogin(token: String)
 
 }
@@ -41,8 +40,6 @@ extension AuthAPI: TargetType {
             return "/resetpassword"
         case .current(_):
             return "/secret"
-        case .googleLogin(_):
-            return "/google"
         case .facebookLogin(_):
             return "/facebook"
         }
@@ -77,8 +74,6 @@ extension AuthAPI: TargetType {
             return .requestParameters(parameters: ["resetPasswordLink" : resetPasswordLink, "newPassword" : newPassword], encoding: JSONEncoding.default)
         case .current(_):
             return .requestPlain
-        case .googleLogin(let token):
-            return .requestParameters(parameters: ["access_token" : token], encoding: JSONEncoding.default)
         case .facebookLogin(let token):
             return .requestParameters(parameters: ["access_token" : token], encoding: JSONEncoding.default)
         }

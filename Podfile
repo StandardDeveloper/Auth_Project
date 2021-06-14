@@ -8,6 +8,7 @@ target 'Auth_API' do
 pod 'Moya'
 pod 'ProgressHUD'
 pod 'SwiftyJSON'
+pod 'Kingfisher'
 
   # Pods for Auth_API
 
