@@ -8,6 +8,7 @@
 import UIKit
 import Moya
 import SwiftyJSON
+import FBSDKLoginKit
 
 class LoginMainPageViewController: UIViewController {
     
@@ -38,7 +39,7 @@ class LoginMainPageViewController: UIViewController {
         let token = UserDefaults.standard.string(forKey: "token")
         
         if(token != nil) {
-  
+            
             let loginCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: "loginCompleteVC")
             self.navigationController?.pushViewController(loginCompleteVC!, animated: true)
         }
@@ -170,7 +171,7 @@ class LoginMainPageViewController: UIViewController {
                 }
                 //로그인 성공
                 else {
-  
+                    
                     let loginCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: "loginCompleteVC")
                     self.navigationController?.pushViewController(loginCompleteVC!, animated: true)
                     
@@ -181,18 +182,32 @@ class LoginMainPageViewController: UIViewController {
             }
             
         }
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
     
     
+    @IBAction func facebookLoginBtn(_ sender: Any) {
+        
+        guard let accessToken = AccessToken.current else {
+            print("failed to get accessToken")
+            return
+        }
+        
+        loginProvider.request(.facebookLogin(token: accessToken.tokenString)) { response in
+            
+            switch response {
+            
+            case .success(let data):
+                let jsonData = JSON(data.data)
+                print("+++++++++++",jsonData)
+                break
+                
+            case .failure(let err):
+                print(err)
+                break
+            }
+        }
+    }
     
     
     

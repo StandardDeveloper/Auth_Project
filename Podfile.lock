@@ -1,5 +1,17 @@
 PODS:
   - Alamofire (5.4.3)
+  - FBSDKCoreKit (11.0.0):
+    - FBSDKCoreKit/Core (= 11.0.0)
+  - FBSDKCoreKit/Core (11.0.0):
+    - FBSDKCoreKit_Basics (~> 11.0.0)
+  - FBSDKCoreKit_Basics (11.0.0):
+    - FBSDKCoreKit_Basics/Basics (= 11.0.0)
+  - FBSDKCoreKit_Basics/Basics (11.0.0)
+  - FBSDKLoginKit (11.0.0):
+    - FBSDKLoginKit/Login (= 11.0.0)
+  - FBSDKLoginKit/Login (11.0.0):
+    - FBSDKCoreKit (~> 11.0.0)
+    - FBSDKCoreKit_Basics (~> 11.0.0)
   - Kingfisher (6.3.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
@@ -9,6 +21,7 @@ PODS:
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - FBSDKLoginKit
   - Kingfisher
   - Moya
   - ProgressHUD
@@ -17,6 +30,9 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - FBSDKLoginKit
     - Kingfisher
     - Moya
     - ProgressHUD
@@ -24,11 +40,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  FBSDKCoreKit: 3e6f565de8b4fbe11f8ee5d499f5898b0bde2cdd
+  FBSDKCoreKit_Basics: 9cf699662174870962deb39f07a5d70d4594c4b7
+  FBSDKLoginKit: 0ba3e15e9bdbeb46716d0fa375e6b71c39d4c477
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 222132460ae78d98165d9c662b17729f1ae5c351
+PODFILE CHECKSUM: 90c7cf52bad8671c8977889d328b7e9750804244
 
 COCOAPODS: 1.10.1

@@ -9,6 +9,7 @@ pod 'Moya'
 pod 'ProgressHUD'
 pod 'SwiftyJSON'
 pod 'Kingfisher'
+pod 'FBSDKLoginKit'
 
   # Pods for Auth_API
 
