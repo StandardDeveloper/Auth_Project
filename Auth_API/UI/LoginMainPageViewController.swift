@@ -9,6 +9,7 @@ import UIKit
 import Moya
 import SwiftyJSON
 import FBSDKLoginKit
+import Alamofire
 
 class LoginMainPageViewController: UIViewController {
     
@@ -185,32 +186,100 @@ class LoginMainPageViewController: UIViewController {
     }
     
     
-    
     @IBAction func facebookLoginBtn(_ sender: Any) {
         
-        guard let accessToken = AccessToken.current else {
-            print("failed to get accessToken")
-            return
-        }
+        let fbLoginManager = LoginManager()
         
-        loginProvider.request(.facebookLogin(token: accessToken.tokenString)) { response in
+        fbLoginManager.logIn(permissions: ["public_profile", "email"], from: self) { result, error in
             
-            switch response {
-            
-            case .success(let data):
-                let jsonData = JSON(data.data)
-                print("+++++++++++",jsonData)
-                break
-                
-            case .failure(let err):
-                print(err)
-                break
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            } else if ((result?.isCancelled) != nil) {
+                return
             }
+            
+            
+            guard let accessToken = AccessToken.current else {
+                print("failed to get accessToken")
+                return
+            }
+            print("user", accessToken.userID)
+            print("tokenString", accessToken.tokenString)
+            
+           
+            
+            self.loginProvider.request(.facebookLogin(token: accessToken.tokenString)) { response in
+                switch response {
+                
+                case .success(let res):
+                    let jsonData = JSON(res.data)
+                    
+                    print("ddddd",jsonData)
+                    let tokenIfno = jsonData["token"].string
+                    UserDefaults.standard.setValue(tokenIfno, forKey: "token")
+                    print("+++++++++++",jsonData)
+                    
+                    if(res.statusCode != 200) {
+                        
+                        let Alertvc = UIAlertController(title: "로그인 실패", message: "", preferredStyle: .actionSheet)
+                        let AlertOK = UIAlertAction(title: "로그인정보 입력 오류", style: .default, handler: nil)
+                        Alertvc.addAction(AlertOK)
+                        self.present(Alertvc, animated: true, completion: nil)
+                        
+                    }
+                    //로그인 성공
+                    else {
+                        
+                        let loginCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: "loginCompleteVC")
+                        self.navigationController?.pushViewController(loginCompleteVC!, animated: true)
+                        
+                    }
+                    break
+                    
+                case .failure(let err):
+                    print(err)
+                    break
+                }
+            }
+            
+            //            self.loginProvider.request(.facebookLogin(userId: accessToken.userID, token: accessToken.tokenString)) { response in
+            //
+            //                print("-------------", response)
+            //                switch response {
+            //
+            //                case .success(let data):
+            //                    let jsonData = JSON(data.data)
+            //                    print("+++++++++++",jsonData)
+            //                    break
+            //
+            //                case .failure(let err):
+            //                    print(err)
+            //                    break
+            //
+            //
+            //                }
+            //
+            //            }
+            //            self.loginProvider.request(.facebookLogin(token: accessToken.tokenString)) { response in
+            //
+            //
+            //                print("-------------", response)
+            //
+            //                switch response {
+            //
+            //                case .success(let data):
+            //                    //let jsonData = JSON(data.data)
+            //                    print("+++++++++++",data)
+            //                    break
+            //
+            //                case .failure(let err):
+            //                    print(err)
+            //                    break
+            //
+            //
+            //                }
+            //            }
         }
     }
-    
-    
-    
-    
-    
 }

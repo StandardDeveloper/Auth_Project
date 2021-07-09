@@ -75,7 +75,7 @@ extension AuthAPI: TargetType {
         case .current(_):
             return .requestPlain
         case .facebookLogin(let token):
-            return .requestParameters(parameters: ["access_token" : token], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["access_token" : token], encoding: URLEncoding.default)
         }
     }
     
