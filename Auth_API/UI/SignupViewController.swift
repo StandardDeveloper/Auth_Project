@@ -90,12 +90,14 @@ class SignupViewController: UIViewController {
         passwordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10).isActive = true
         passwordTextField.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20).isActive = true
+        passwordTextField.isSecureTextEntry = true
         
         confirmPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
         confirmPasswordTextField.widthAnchor.constraint(equalToConstant: view.frame.width - 110).isActive = true
         confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         confirmPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10).isActive = true
         confirmPasswordTextField.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20).isActive = true
+        confirmPasswordTextField.isSecureTextEntry = true
         
         signupBtn.translatesAutoresizingMaskIntoConstraints = false
         signupBtn.layer.cornerRadius = 5

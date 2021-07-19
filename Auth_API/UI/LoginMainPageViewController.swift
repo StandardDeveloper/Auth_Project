@@ -10,6 +10,7 @@ import Moya
 import SwiftyJSON
 import FBSDKLoginKit
 import Alamofire
+import BRYXBanner
 
 class LoginMainPageViewController: UIViewController {
     
@@ -164,10 +165,10 @@ class LoginMainPageViewController: UIViewController {
                 //로그인 실패
                 if(res.statusCode != 200) {
                     
-                    let Alertvc = UIAlertController(title: "로그인 실패", message: "", preferredStyle: .actionSheet)
-                    let AlertOK = UIAlertAction(title: "로그인정보 입력 오류", style: .default, handler: nil)
-                    Alertvc.addAction(AlertOK)
-                    self.present(Alertvc, animated: true, completion: nil)
+                    let banner = Banner(title: "", subtitle: "아이디, 비밀번호 확인해주세요.", image: UIImage(named: "Icon"), backgroundColor: UIColor(red:255.0/255.0, green:222.0/255.0, blue:230.0/255.0, alpha:1.000))
+                    banner.dismissesOnTap = true
+                    banner.textColor = UIColor(red:160.0/255.0, green:8.0/255.0, blue:8.0/255.0, alpha:1.000)
+                    banner.show(duration: 2.0)
                     
                 }
                 //로그인 성공
@@ -195,30 +196,24 @@ class LoginMainPageViewController: UIViewController {
             if error != nil {
                 print(error?.localizedDescription)
                 return
-            } else if ((result?.isCancelled) != nil) {
-                return
             }
-            
+            //            else if ((result?.isCancelled) != nil) {
+            //                return
+            //            }
             
             guard let accessToken = AccessToken.current else {
                 print("failed to get accessToken")
                 return
             }
-            print("user", accessToken.userID)
-            print("tokenString", accessToken.tokenString)
-            
            
-            
             self.loginProvider.request(.facebookLogin(token: accessToken.tokenString)) { response in
                 switch response {
                 
                 case .success(let res):
                     let jsonData = JSON(res.data)
                     
-                    print("ddddd",jsonData)
                     let tokenIfno = jsonData["token"].string
                     UserDefaults.standard.setValue(tokenIfno, forKey: "token")
-                    print("+++++++++++",jsonData)
                     
                     if(res.statusCode != 200) {
                         
@@ -242,44 +237,6 @@ class LoginMainPageViewController: UIViewController {
                     break
                 }
             }
-            
-            //            self.loginProvider.request(.facebookLogin(userId: accessToken.userID, token: accessToken.tokenString)) { response in
-            //
-            //                print("-------------", response)
-            //                switch response {
-            //
-            //                case .success(let data):
-            //                    let jsonData = JSON(data.data)
-            //                    print("+++++++++++",jsonData)
-            //                    break
-            //
-            //                case .failure(let err):
-            //                    print(err)
-            //                    break
-            //
-            //
-            //                }
-            //
-            //            }
-            //            self.loginProvider.request(.facebookLogin(token: accessToken.tokenString)) { response in
-            //
-            //
-            //                print("-------------", response)
-            //
-            //                switch response {
-            //
-            //                case .success(let data):
-            //                    //let jsonData = JSON(data.data)
-            //                    print("+++++++++++",data)
-            //                    break
-            //
-            //                case .failure(let err):
-            //                    print(err)
-            //                    break
-            //
-            //
-            //                }
-            //            }
         }
     }
 }

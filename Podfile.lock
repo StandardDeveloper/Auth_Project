@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.3)
+  - BRYXBanner (0.8.4)
   - FBSDKCoreKit (11.0.0):
     - FBSDKCoreKit/Core (= 11.0.0)
   - FBSDKCoreKit/Core (11.0.0):
@@ -21,6 +22,7 @@ PODS:
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - BRYXBanner
   - FBSDKLoginKit
   - Kingfisher
   - Moya
@@ -30,6 +32,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BRYXBanner
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
     - FBSDKLoginKit
@@ -40,6 +43,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  BRYXBanner: 4fbd266f96ce000e4c6cc9a0558c446bd88d9801
   FBSDKCoreKit: 3e6f565de8b4fbe11f8ee5d499f5898b0bde2cdd
   FBSDKCoreKit_Basics: 9cf699662174870962deb39f07a5d70d4594c4b7
   FBSDKLoginKit: 0ba3e15e9bdbeb46716d0fa375e6b71c39d4c477
@@ -48,6 +52,6 @@ SPEC CHECKSUMS:
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 90c7cf52bad8671c8977889d328b7e9750804244
+PODFILE CHECKSUM: 29a4a339700bf1ea5ae19f43d7d7c80e58e8b8cc
 
 COCOAPODS: 1.10.1

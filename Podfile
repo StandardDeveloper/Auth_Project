@@ -10,6 +10,7 @@ pod 'ProgressHUD'
 pod 'SwiftyJSON'
 pod 'Kingfisher'
 pod 'FBSDKLoginKit'
+pod 'BRYXBanner'
 
   # Pods for Auth_API
 
